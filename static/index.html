@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexReply | Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Vivid Animated Background -->
+    <div class="blob-cont">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+    <div class="noise-overlay"></div>
+
+    <!-- Professional SaaS Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="brand-logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="gradient-svg" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <span class="gradient-text">NexReply</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active">Draft Studio</a>
+                <a href="#" onclick="alert('Development Notice: The History log panel is under construction!')">History</a>
+                <a href="#" onclick="alert('Development Notice: The Engine Settings panel is under construction!')">Settings</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <span class="beta-badge">Public Beta v1.0</span>
+        </div>
+    </nav>
+
+    <div class="workspace-wrapper">
+        <header class="page-header">
+            <div>
+                <h1>New Draft</h1>
+                <p class="subtitle">Synthesize hyper-intelligent email replies instantly.</p>
+            </div>
+        </header>
+
+        <main class="layout-grid">
+            <!-- Left Side: Inputs -->
+            <section class="glass-card input-section">
+
+                <div class="input-group">
+                    <div class="label-row">
+                        <label>Incoming Thread</label>
+                        <button id="analyze-btn" class="glow-edge-button" title="Auto-detect tone and urgency">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72z"></path><path d="m14 7 3 3"></path><path d="M5 6v4"></path><path d="M19 14v4"></path><path d="M10 2v2"></path><path d="M7 8H3"></path><path d="M21 16h-4"></path><path d="M11 3H9"></path></svg>
+                            Auto-Detect Vibe
+                        </button>
+                    </div>
+                    <textarea id="email-input" class="large-textarea" placeholder="Paste the email thread you received here..."></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label>Specific Instructions <span class="optional">(Optional)</span></label>
+                    <textarea id="context-input" class="small-textarea" placeholder="e.g. Include a link to the design mockups..."></textarea>
+                </div>
+
+                <div class="controls-row">
+                    <div class="control-item">
+                        <label>Voice</label>
+                        <select id="tone-select" class="glass-select">
+                            <option value="Professional & Executive">Professional</option>
+                            <option value="Friendly & Approachable">Friendly</option>
+                            <option value="Direct & Assertive">Direct</option>
+                            <option value="Apologetic & Empathetic">Empathetic</option>
+                        </select>
+                    </div>
+                    <div class="control-item">
+                        <label>Length</label>
+                        <select id="length-select" class="glass-select">
+                            <option value="Concise">Concise</option>
+                            <option value="Standard" selected>Standard</option>
+                            <option value="Detailed">Detailed</option>
+                        </select>
+                    </div>
+                    <div class="control-item">
+                        <label>Priority</label>
+                        <select id="urgency-select" class="glass-select">
+                            <option value="Normal">Normal</option>
+                            <option value="Urgent ASAP">Urgent</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <button id="generate-btn" class="button-primary-gradient">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    Synthesize Draft
+                </button>
+            </section>
+
+            <!-- Right Side: Output -->
+            <section class="glass-card output-section">
+                <div class="output-header">
+                    <h2>Generated Draft</h2>
+                    <div class="header-actions">
+                        <div class="status-indicator" id="status-msg">Ready</div>
+                        <button id="copy-btn" class="icon-button" title="Copy to clipboard">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 20 0 0 1-2-2V4a2 20 0 0 1 2-2h9a2 20 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="output-box" class="placeholder-active">
+                    <div class="placeholder-icon">
+                        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+                    </div>
+                    <p>Provide an email on the left and synthesize.<br>Your finalized response will render here.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="/static/script.js?v=3"></script>
+</body>
+</html>
